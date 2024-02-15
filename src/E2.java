@@ -1,69 +1,65 @@
-import java.util.Arrays;
-import java.util.Scanner;
+package Ex2;
 
-public class E1 {
-    private int[] array = new int[1];
-    private int count = 0;
-    public void menu() {
-        Scanner scan = new Scanner(System.in);
-        boolean exit = true;
-        do {
-            System.out.println("Enter The Numbers : ");
-            System.out.println("\t1. Input the Number.");
-            System.out.println("\t2. View the Number.");
-            System.out.println("\t3. Exit.");
-            System.out.print("Enter Number;");
-            int choice = scan.nextInt();
+public class Sale {
+    Customer cus;
+    String date;
+    double serviceExpense;
+    double ProductExpense;
 
-            switch (choice) {
-                case 1 : {
-                    boolean out = true;
-                    do {
-                        System.out.print("Enter negative Number to exit : ");
-                        int num = scan.nextInt();
-
-                        if(num<0) {
-                            out = false;
-                        }else {
-                            array = this.addMoreArray(array);
-                            array[count] = num;
-                            count++;
-                        }
-
-                    }while(out);
-
-                    break;
-                }
-                case 2 : {
-                    this.show();
-                    break;
-                }
-                case 3 : {
-                    exit = false;
-                    break;
-                }
-                default: {
-                    System.out.println("mtfker Wrong choice !");
-                }
-            }
-
-
-        }while(exit);
+    public Sale(Customer cus, String date) {
+        this.cus = cus;
+        this.date = date;
     }
 
+    public double getProductExpense() {
+        return ProductExpense;
+    }
 
+    public double getServiceExpense() {
+        return serviceExpense;
+    }
 
-    public int[] addMoreArray (int[] value) {
-        int[] result = new int[count+1];
+    public void setProductExpense(double productExpense) {
+        ProductExpense = productExpense;
+    }
 
-        for(int i=0; i< array.length; i++) {
-            result[i] = array[i];
+    public void setServiceExpense(double serviceExpense) {
+        this.serviceExpense = serviceExpense;
+    }
+
+    public double   getTotalExpense() {
+        return 1;
+    }
+    public void displayInfo() {
+        double total = 0;
+
+        System.out.println("Name : " + cus.customerName);
+        System.out.println("Type : " + cus.customerType);
+        if(cus.customerType == "Normal") {
+            total = serviceExpense;
+            System.out.println("Service Expense : " + Double.toString(total));
+            total += ProductExpense;
+            System.out.println("Product Expense : " + Double.toString(ProductExpense));
+        }else if(cus.customerType == "Silver") {
+            total = serviceExpense * 0.9;
+            System.out.println("Service Expense : " + Double.toString(total));
+            total += ProductExpense * 0.9;
+            System.out.println("Product Expense : " + Double.toString(ProductExpense * 0.9));
+        }else if(cus.customerType == "Gold") {
+            total = serviceExpense * 0.85;
+            System.out.println("Service Expense : " + Double.toString(total));
+            total += ProductExpense * 0.9;
+            System.out.println("Product Expense : " + Double.toString(ProductExpense * 0.9));
+        }else if(cus.customerType == "Premium") {
+            total = serviceExpense * 0.8;
+            System.out.println("Service Expense : " + Double.toString(total));
+            total += ProductExpense * 0.9;
+            System.out.println("Product Expense : " + Double.toString(ProductExpense * 0.9));
         }
 
-        return result;
-    }
 
-    public void show () {
-        System.out.println(Arrays.toString(this.array));
+        System.out.println("total is : " + Double.toString(total));
+
+        System.out.println("\n\n");
     }
 }
