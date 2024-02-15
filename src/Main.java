@@ -4,7 +4,6 @@ import java.util.Scanner;
 public class E1 {
     private int[] array = new int[1];
     private int count = 0;
-
     public void menu() {
         Scanner scan = new Scanner(System.in);
         boolean exit = true;
