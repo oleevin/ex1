@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Ex1 {
+public class E1 {
     private int[] array = new int[1];
     private int count = 0;
 
